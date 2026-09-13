@@ -231,12 +231,7 @@ function MenuScreen({ data }: { data: MenuData }) {
               {restaurant.address}
             </p>
           ) : null}
-          <p>
-            {restaurant.name} • Cardápio digital ·{" "}
-            <a href="/admin" className="underline underline-offset-2 hover:text-zinc-600">
-              Área do restaurante
-            </a>
-          </p>
+          <p>{restaurant.name} • Cardápio digital</p>
         </footer>
       </main>
 

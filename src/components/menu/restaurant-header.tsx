@@ -1,19 +1,11 @@
 import { FacebookIcon, InstagramIcon, PinIcon, WhatsAppIcon } from "@/components/icons";
+import { StoreLogo } from "@/components/menu/store-logo";
 import { formatPhoneBR } from "@/lib/format";
 import type { RestaurantDTO } from "@/lib/types";
 
 type Props = {
   restaurant: RestaurantDTO;
 };
-
-function initials(name: string) {
-  return name
-    .split(/\s+/)
-    .filter(Boolean)
-    .slice(0, 2)
-    .map((part) => part[0]?.toUpperCase())
-    .join("");
-}
 
 export function RestaurantHeader({ restaurant }: Props) {
   const whatsappHref = restaurant.whatsapp ? `https://wa.me/${restaurant.whatsapp}` : null;
@@ -45,22 +37,7 @@ export function RestaurantHeader({ restaurant }: Props) {
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/10" />
         </div>
 
-        <div className="absolute -bottom-10 left-1/2 -translate-x-1/2">
-          <div className="grid h-[88px] w-[88px] place-items-center overflow-hidden rounded-full border-[3px] border-white bg-[#120621] shadow-[0_6px_22px_rgba(139,31,214,0.45)]">
-            {restaurant.logoImage ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                src={restaurant.logoImage}
-                alt={`Logo ${restaurant.name}`}
-                className="h-full w-full object-cover"
-              />
-            ) : (
-              <span className="grid h-full w-full place-items-center bg-brand text-xl font-black text-white">
-                {initials(restaurant.name)}
-              </span>
-            )}
-          </div>
-        </div>
+        <StoreLogo restaurant={restaurant} />
       </div>
 
       <div className="mt-12 grid grid-cols-[1fr_auto_1fr] items-center">

@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "MIX RL – Açaí na Garrafa | Cardápio",
   description:
     "Açaí na garrafa em Rio Largo – AL. Sabores Maracujá, Ninho, Morango e Amendoim em 300ml e 500ml. Bateu vontade? Pede Mix pelo WhatsApp!",
-  icons: { icon: "/imagens/logo.webp", apple: "/imagens/logo.webp" },
+  icons: { icon: "/images/logo.webp", apple: "/images/logo.webp" },
 };
 
 export const viewport: Viewport = {

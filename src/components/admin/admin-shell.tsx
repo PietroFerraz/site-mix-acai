@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import { CategoriesPanel } from "@/components/admin/categories-panel";
 import { ItemsPanel } from "@/components/admin/items-panel";
@@ -14,7 +15,7 @@ const TABS: { value: Tab; label: string }[] = [
   { value: "orders", label: "Pedidos" },
   { value: "items", label: "Itens" },
   { value: "categories", label: "Categorias" },
-  { value: "settings", label: "Configurações" },
+  { value: "settings", label: "Ajustes" },
 ];
 
 type Notice = { type: "success" | "error"; text: string };
@@ -30,6 +31,7 @@ export function AdminShell({
   const [menu, setMenu] = useState<MenuData>(initialMenu);
   const [orders, setOrders] = useState<OrderDTO[]>(initialOrders);
   const [notice, setNotice] = useState<Notice | null>(null);
+  const router = useRouter();
 
   const reloadMenu = useCallback(async () => {
     try {
@@ -57,6 +59,11 @@ export function AdminShell({
     return () => window.clearInterval(id);
   }, [reloadOrders]);
 
+  const logout = useCallback(async () => {
+    await fetch("/api/admin/session", { method: "DELETE" }).catch(() => null);
+    router.replace("/");
+  }, [router]);
+
   const notify = useCallback((type: Notice["type"], text: string) => {
     setNotice({ type, text });
     window.setTimeout(() => setNotice(null), 2600);
@@ -83,10 +90,10 @@ export function AdminShell({
               <p className="truncate text-sm font-extrabold text-zinc-900">
                 {menu.restaurant.name}
               </p>
-              <p className="text-[11px] text-zinc-500">Painel do restaurante</p>
+              <p className="text-[11px] text-zinc-500">Restaurante</p>
             </div>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
             <span
               className={`hidden rounded-full px-2.5 py-1 text-[11px] font-bold sm:inline ${
                 menu.restaurant.isOpen
@@ -102,6 +109,13 @@ export function AdminShell({
             >
               Ver cardápio
             </Link>
+            <button
+              type="button"
+              onClick={logout}
+              className="rounded-lg border border-zinc-200 px-2.5 py-2 text-sm font-semibold text-zinc-600 transition hover:bg-zinc-50"
+            >
+              Sair
+            </button>
           </div>
         </div>
         <nav className="no-scrollbar mx-auto flex max-w-5xl gap-1 overflow-x-auto px-4">

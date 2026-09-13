@@ -37,22 +37,22 @@ const FLAVORS = [
     name: "Açaí Maracujá",
     description:
       "Açaí cremoso batido na hora com maracujá, direto na garrafa. Geladinho e pronto pra beber.",
-    imageUrl: "/imagens/acai-maracuja.webp",
+    imageUrl: "/images/acai-maracuja.webp",
   },
   {
     name: "Açaí Ninho",
     description: "Açaí cremoso com leite Ninho: doce na medida certa e super cremoso.",
-    imageUrl: "/imagens/acai-ninho.webp",
+    imageUrl: "/images/acai-ninho.webp",
   },
   {
     name: "Açaí Morango",
     description: "Açaí cremoso batido com morango fresquinho. Clássico que nunca falha.",
-    imageUrl: "/imagens/acai-morango.webp",
+    imageUrl: "/images/acai-morango.webp",
   },
   {
     name: "Açaí Amendoim",
     description: "Açaí cremoso com amendoim crocante. O favorito de quem gosta de textura.",
-    imageUrl: "/imagens/acai-amendoim.webp",
+    imageUrl: "/images/acai-amendoim.webp",
   },
 ];
 
@@ -72,8 +72,8 @@ async function runSeed() {
         name: "MIX RL",
         slug: "mix-rl",
         tagline: "Açaí na garrafa 🍇 Bateu vontade? Pede Mix!",
-        coverImage: "/imagens/capa.webp",
-        logoImage: "/imagens/logo.webp",
+        coverImage: "/images/capa.webp",
+        logoImage: "/images/logo.webp",
         facebookUrl: null,
         instagramUrl: null,
         whatsapp: "5582987453666",
